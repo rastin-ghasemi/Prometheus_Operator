@@ -1,6 +1,6 @@
 - In This Project we are Setting Up Prometheus Operator via OLM to Monitor a Node with 3 Nginx Services
 
-## Step 1 : Install Operator Lifecycle Manager (OLM), 
+## Step 1 : Install Operator Lifecycle Manager (OLM)
 a tool to help manage the Operators running on your cluster.
 
 - OLM is the package manager for Kubernetes Operators.
