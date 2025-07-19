@@ -1,6 +1,6 @@
-- In This Project we are Setting Up Prometheus Operator via OLM to Monitor a Node with 3 Nginx Services
+- In This Project, we are Setting Up Prometheus Operator via OLM to Monitor a Node with 3 Nginx Services
 
-## Step 1 : Install Operator Lifecycle Manager (OLM)
+## Step 1: Install Operator Lifecycle Manager (OLM)
 a tool to help manage the Operators running on your cluster.
 
 - OLM is the package manager for Kubernetes Operators.
@@ -10,7 +10,7 @@ a tool to help manage the Operators running on your cluster.
 ```bash
 curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.32.0/install.sh | bash -s v0.32.0
 ```
-It Will Deploys:
+It Will deploy:
 
     olm-operator (manages Operator installations)
 
@@ -30,17 +30,17 @@ This Operator will be installed in the "operators" namespace and will be usable 
 kubectl create -f https://operatorhub.io/install/prometheus.yaml
 ```
 
-- After install, watch your operator come up using next command.
+- After installation, watch your operator come up using the next command.
 
 ```bash
 kubectl get csv -n operators
-# Wait For Few Second and Run This Command Result:
+# Wait For Few seconds and Run This Command Result:
 controlplane ~ ➜  kubectl get csv -n operators
 NAME                         DISPLAY               VERSION   REPLACES                     PHASE
 prometheusoperator.v0.70.0   Prometheus Operator   0.70.0    prometheusoperator.v0.65.1   Pending
 
 ```
-## Step 3: Create NameSpace
+## Step 3: Create Namespace
 ```bash
 kubectl create namespace monitoring  # Isolate monitoring resources
 ```
@@ -268,9 +268,9 @@ Key Options:
 
 ## Step 9:Configure Node Monitoring
 Why?
-- Nodes need a DaemonSet (node-exporter) to expose CPU, memory, disk metrics.
+- Nodes need a DaemonSet (node-exporter) to expose CPU, memory, and disk metrics.
 
-- PodMonitor tells Prometheus how to scrape node-exporter.
+- PodMonitor tells Prometheus how to scrape the node-exporter.
 ```bash
 # Check if node-exporter is already installed (OLM may deploy it)
 kubectl get daemonset -n monitoring -l app.kubernetes.io/name=node-exporter
@@ -335,7 +335,7 @@ spec:
     interval: 15s
 ```
 What Happens?
-- node-exporter runs on every node (DaemonSet).
+- Node-exporter runs on every node (DaemonSet).
 
 - PodMonitor configures scraping for Prometheus.    
 ## Verify Monitoring
